@@ -27,14 +27,15 @@ function getFirstDiagnosticCode (array, input) {
       if (instruction[instruction.length - 5] === '0' || instruction.length < 5) thirdPosition = array[i + 3];
       else if (instruction[instruction.length - 5] === '1') thirdPosition = i + 3;
 
-      if (instruction[instruction.length - 1] === '3') {
+      if (instruction[instruction.length - 1] === '1') add = true;
+      else if (instruction[instruction.length - 1] === '2') multiply = true;
+      else if (instruction[instruction.length - 1] === '3') {
         array[firstPosition] = input;
         step = 2;
       } else if (instruction[instruction.length - 1] === '4') {
         console.log(array[firstPosition]);
         step = 2;
-      } else if (instruction[instruction.length - 1] === '1') add = true;
-      else if (instruction[instruction.length - 1] === '2') multiply = true;
+      }
 
       if (add) {
         array[thirdPosition] = array[firstPosition] + array[secondPosition];
